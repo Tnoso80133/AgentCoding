@@ -1,0 +1,494 @@
+/* ==========================================================================
+   全域變數與重設 (Variables & Reset)
+   ========================================================================== */
+:root {
+    --bg-primary: #080c14;
+    --bg-secondary: #0c1322;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    
+    /* 霓虹發光色彩 */
+    --color-neon-blue: #00f2fe;
+    --color-neon-purple: #7f00ff;
+    --color-neon-green: #39ff14;
+    
+    /* 毛玻璃卡片色彩 */
+    --glass-bg: rgba(13, 20, 38, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(0, 242, 254, 0.3);
+    
+    /* 語言色彩 */
+    --color-js: #f7df1e;
+    --color-ipynb: #f37626;
+    --color-html: #e34c26;
+    --color-unknown: #64748b;
+    
+    --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   背景裝飾光暈 (Neon Glow Blobs)
+   ========================================================================== */
+.glow-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+    mix-blend-mode: screen;
+    animation: float-around 20s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--color-neon-blue) 0%, transparent 70%);
+}
+
+.blob-2 {
+    bottom: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, var(--color-neon-purple) 0%, transparent 70%);
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.blob-3 {
+    top: 40%;
+    left: 50%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, #ff007f 0%, transparent 70%);
+    animation-delay: -10s;
+    animation-duration: 18s;
+}
+
+@keyframes float-around {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(8%, 12%) scale(1.15);
+    }
+}
+
+/* ==========================================================================
+   排版與容器 (Container)
+   ========================================================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   Hero 區塊 (Profile Hero Section)
+   ========================================================================== */
+.profile-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 5rem;
+    animation: fade-slide-up 1s ease-out;
+}
+
+.avatar-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    object-fit: cover;
+    z-index: 2;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.avatar-glow {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, var(--color-neon-blue), var(--color-neon-purple));
+    border-radius: 50%;
+    z-index: 1;
+    filter: blur(15px);
+    opacity: 0.7;
+    animation: rotate-glow 8s linear infinite;
+    transition: var(--transition-smooth);
+}
+
+.avatar-wrapper:hover .profile-avatar {
+    transform: scale(1.05);
+    border-color: var(--color-neon-blue);
+}
+
+.avatar-wrapper:hover .avatar-glow {
+    filter: blur(25px);
+    opacity: 1;
+}
+
+@keyframes rotate-glow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.profile-name {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, #ffffff 30%, var(--color-neon-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.profile-bio {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 2rem;
+    font-weight: 300;
+}
+
+/* 按鈕樣式 (Buttons) */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-neon-blue), #0072ff);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 242, 254, 0.5);
+}
+
+/* ==========================================================================
+   統計儀表板 (Stats Dashboard)
+   ========================================================================== */
+.stats-dashboard {
+    margin-bottom: 5rem;
+    animation: fade-slide-up 1.2s ease-out;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, #ffffff 60%, var(--color-neon-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-title i {
+    color: var(--color-neon-blue);
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.stat-card {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: var(--transition-smooth);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background: rgba(0, 242, 254, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-neon-blue);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   儲存庫列表 (Repositories Grid)
+   ========================================================================== */
+.repos-section {
+    margin-bottom: 5rem;
+    animation: fade-slide-up 1.4s ease-out;
+}
+
+.repos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.repo-card {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+/* 霓虹角落裝飾 */
+.repo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--color-neon-blue), transparent);
+    transform: scaleX(0);
+    transition: var(--transition-smooth);
+}
+
+.repo-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 15px 35px rgba(0, 242, 254, 0.15), 0 0 1px rgba(0, 242, 254, 0.5);
+}
+
+.repo-card:hover::before {
+    transform: scaleX(1);
+}
+
+.repo-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.repo-icon {
+    font-size: 1.5rem;
+    color: var(--color-neon-blue);
+    background: rgba(0, 242, 254, 0.08);
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 242, 254, 0.15);
+}
+
+.repo-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.repo-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+    font-weight: 300;
+}
+
+.repo-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1.2rem;
+}
+
+.repo-language {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lang-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.lang-js { background-color: var(--color-js); box-shadow: 0 0 8px var(--color-js); }
+.lang-ipynb { background-color: var(--color-ipynb); box-shadow: 0 0 8px var(--color-ipynb); }
+.lang-html { background-color: var(--color-html); box-shadow: 0 0 8px var(--color-html); }
+.lang-none { background-color: var(--color-unknown); }
+
+.repo-date {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.repo-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.repo-link {
+    color: var(--color-neon-blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-smooth);
+}
+
+.repo-link i {
+    transition: var(--transition-smooth);
+}
+
+.repo-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px var(--color-neon-blue);
+}
+
+.repo-link:hover i {
+    transform: translateX(5px);
+}
+
+/* ==========================================================================
+   頁尾 (Footer)
+   ========================================================================== */
+.portfolio-footer {
+    border-top: 1px solid var(--glass-border);
+    padding: 3rem 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    animation: fade-slide-up 1.6s ease-out;
+}
+
+.footer-sub {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   動畫效果 (Keyframes)
+   ========================================================================== */
+@keyframes fade-slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   響應式調整 (Media Queries)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .profile-name {
+        font-size: 2.8rem;
+    }
+    
+    .container {
+        padding: 2rem 1rem;
+    }
+    
+    .repos-grid {
+        grid-template-columns: 1fr;
+    }
+}

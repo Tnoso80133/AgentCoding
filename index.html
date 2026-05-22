@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tnoso80133 - GitHub Portfolio</title>
+    <!-- 引入 Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- 引入 Font Awesome 6 圖示 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 連結 CSS 檔案 -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- 背景裝飾光暈 -->
+    <div class="glow-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- 頂部個人資訊 Hero 區區 -->
+        <header class="profile-hero">
+            <div class="avatar-wrapper">
+                <img src="https://avatars.githubusercontent.com/u/207293291?v=4" alt="Tnoso80133" class="profile-avatar">
+                <div class="avatar-glow"></div>
+            </div>
+            <h1 class="profile-name">Tnoso80133</h1>
+            <p class="profile-bio">探索 AI、機器學習與代理人自動化編程 (Agentic Coding) 的技術實踐者</p>
+            <div class="profile-links">
+                <a href="https://github.com/Tnoso80133" target="_blank" class="btn btn-primary" id="github-profile-link">
+                    <i class="fa-brands fa-github"></i> 前往 GitHub 主頁
+                </a>
+            </div>
+        </header>
+
+        <!-- 統計儀表板 Dashboard -->
+        <section class="stats-dashboard">
+            <h2 class="section-title"><i class="fa-solid fa-chart-simple"></i> 數據統計</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-code-branch"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">公開儲存庫</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-value">3+</span>
+                        <span class="stat-label">主要開發語言</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-value">2025</span>
+                        <span class="stat-label">專案起步年份</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 儲存庫介紹 Repositories -->
+        <section class="repos-section">
+            <h2 class="section-title"><i class="fa-solid fa-cubes"></i> 儲存庫列表</h2>
+            <div class="repos-grid">
+                
+                <!-- Card 1: Agentic-Coding -->
+                <article class="repo-card animate-card">
+                    <div class="repo-header">
+                        <div class="repo-icon"><i class="fa-solid fa-robot"></i></div>
+                        <h3 class="repo-name">Agentic-Coding</h3>
+                    </div>
+                    <p class="repo-description">
+                        本專案專注於代理人編程（Agentic Coding）的開發與研究。透過結合大型語言模型與開發代理，實現自動化程式碼編寫、測試與部署，是探索自主編程代理的實踐基地。
+                    </p>
+                    <div class="repo-meta">
+                        <span class="repo-language"><span class="lang-dot lang-js"></span>JavaScript</span>
+                        <span class="repo-date"><i class="fa-regular fa-clock"></i> 2026/04</span>
+                    </div>
+                    <div class="repo-footer">
+                        <a href="https://github.com/Tnoso80133/Agentic-Coding" target="_blank" class="repo-link" id="link-agentic-coding">
+                            查看儲存庫 <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Card 2: AI -->
+                <article class="repo-card animate-card">
+                    <div class="repo-header">
+                        <div class="repo-icon"><i class="fa-solid fa-brain"></i></div>
+                        <h3 class="repo-name">AI</h3>
+                    </div>
+                    <p class="repo-description">
+                        人工智慧核心技術的探索與實踐儲存庫。主要使用 Jupyter Notebook 進行各種 AI 模型、自然語言處理（NLP）及深度學習技術的實驗，記錄了 AI 演算法的研究歷程。
+                    </p>
+                    <div class="repo-meta">
+                        <span class="repo-language"><span class="lang-dot lang-ipynb"></span>Jupyter Notebook</span>
+                        <span class="repo-date"><i class="fa-regular fa-clock"></i> 2025/11</span>
+                    </div>
+                    <div class="repo-footer">
+                        <a href="https://github.com/Tnoso80133/AI" target="_blank" class="repo-link" id="link-ai">
+                            查看儲存庫 <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Card 3: MachineLearning -->
+                <article class="repo-card animate-card">
+                    <div class="repo-header">
+                        <div class="repo-icon"><i class="fa-solid fa-gears"></i></div>
+                        <h3 class="repo-name">MachineLearning</h3>
+                    </div>
+                    <p class="repo-description">
+                        機器學習的學術與實作專案庫，包含經典的機器學習演算法實作、數據集分析以及機器學習期中考的實戰程式碼。深入探討迴歸、分類與聚類等核心概念。
+                    </p>
+                    <div class="repo-meta">
+                        <span class="repo-language"><span class="lang-dot lang-ipynb"></span>Jupyter Notebook</span>
+                        <span class="repo-date"><i class="fa-regular fa-clock"></i> 2025/04</span>
+                    </div>
+                    <div class="repo-footer">
+                        <a href="https://github.com/Tnoso80133/MachineLearning" target="_blank" class="repo-link" id="link-ml">
+                            查看儲存庫 <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Card 4: telegramapp -->
+                <article class="repo-card animate-card">
+                    <div class="repo-header">
+                        <div class="repo-icon"><i class="fa-brands fa-telegram"></i></div>
+                        <h3 class="repo-name">telegramapp</h3>
+                    </div>
+                    <p class="repo-description">
+                        基於 HTML/Web 技術開發的 Telegram Web App 應用。這是一個整合 Telegram 平台生態的網頁端應用，展示了如何將互動式網頁與 Telegram 聊天機器人無縫對接。
+                    </p>
+                    <div class="repo-meta">
+                        <span class="repo-language"><span class="lang-dot lang-html"></span>HTML</span>
+                        <span class="repo-date"><i class="fa-regular fa-clock"></i> 2025/06</span>
+                    </div>
+                    <div class="repo-footer">
+                        <a href="https://github.com/Tnoso80133/telegramapp" target="_blank" class="repo-link" id="link-telegram">
+                            查看儲存庫 <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Card 5: - (Personal Lab) -->
+                <article class="repo-card animate-card">
+                    <div class="repo-header">
+                        <div class="repo-icon"><i class="fa-solid fa-flask"></i></div>
+                        <h3 class="repo-name">-</h3>
+                    </div>
+                    <p class="repo-description">
+                        個人實驗性儲存庫，主要用於臨時程式碼測試、小工具開發或 API 的快速原型驗證。是進行各種新想法技術探索的第一步沙盒環境。
+                    </p>
+                    <div class="repo-meta">
+                        <span class="repo-language"><span class="lang-dot lang-none"></span>未指定語言</span>
+                        <span class="repo-date"><i class="fa-regular fa-clock"></i> 2025/04</span>
+                    </div>
+                    <div class="repo-footer">
+                        <a href="https://github.com/Tnoso80133/-" target="_blank" class="repo-link" id="link-test-repo">
+                            查看儲存庫 <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- 頁尾 Footer -->
+        <footer class="portfolio-footer">
+            <p>&copy; 2026 Tnoso80133. 由 Antigravity 代理人自動化生成與部署</p>
+            <p class="footer-sub">Powering productivity through advanced Agentic Coding.</p>
+        </footer>
+    </div>
+</body>
+</html>

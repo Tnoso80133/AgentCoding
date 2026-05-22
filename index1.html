@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tnoso80133 - Design Intelligence Portfolio</title>
+    <!-- 載入 Google Fonts: Outfit (Display), Inter (Body), JetBrains Mono (Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入新的 Bento Box 樣式表 -->
+    <link rel="stylesheet" href="index1.css">
+</head>
+<body>
+    <!-- 極光漸變背景 (Aurora Evolved Mesh) -->
+    <div class="aurora-bg">
+        <div class="aurora-orb orb-cyan"></div>
+        <div class="aurora-orb orb-magenta"></div>
+        <div class="aurora-orb orb-blue"></div>
+    </div>
+
+    <div class="wrapper">
+        <!-- 頂部副標題 -->
+        <div class="top-nav">
+            <span class="nav-brand"><i class="fa-solid fa-wand-magic-sparkles"></i> DESIGN INTELLIGENCE</span>
+            <span class="nav-date">EST. 2025</span>
+        </div>
+
+        <!-- Bento Grid 容器 -->
+        <main class="bento-grid">
+            
+            <!-- 1. Hero Card (2x2) -->
+            <section class="bento-card bento-hero col-span-2 row-span-2">
+                <div class="hero-aurora"></div>
+                <div class="hero-content">
+                    <div class="avatar-container">
+                        <img src="https://avatars.githubusercontent.com/u/207293291?v=4" alt="Tnoso80133" class="avatar-img">
+                        <div class="avatar-ring"></div>
+                    </div>
+                    <div class="hero-text">
+                        <h1 class="hero-name">Tnoso80133</h1>
+                        <p class="hero-title">Developer & AI Practitioner</p>
+                        <p class="hero-bio">
+                            致力於探索人工智慧（AI）、機器學習（Machine Learning）與軟體代理人自動化開發（Agentic Coding）的技術融合。
+                        </p>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="https://github.com/Tnoso80133" target="_blank" class="bento-btn" id="btn-github-hero">
+                            <i class="fa-brands fa-github"></i> 前往 GitHub
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Pulse Dot Card (1x1) -->
+            <section class="bento-card bento-pulse">
+                <div class="pulse-badge">
+                    <span class="pulse-dot"></span>
+                    <span class="pulse-text">ACTIVE NOW</span>
+                </div>
+                <div class="pulse-content">
+                    <h3 class="pulse-title">開發狀態</h3>
+                    <p class="pulse-status">正在探索 Agentic 流程</p>
+                </div>
+            </section>
+
+            <!-- 3. Stat Card (1x1) -->
+            <section class="bento-card bento-stat">
+                <div class="stat-num">05</div>
+                <div class="stat-meta">
+                    <span class="stat-label">PUBLIC REPOS</span>
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+            </section>
+
+            <!-- 4. Major Repo Card (2x1) - Agentic-Coding -->
+            <section class="bento-card bento-repo-major col-span-2">
+                <div class="repo-badge"><i class="fa-solid fa-star-of-life"></i> 精選專案</div>
+                <div class="repo-body">
+                    <h3 class="repo-title-name">Agentic-Coding</h3>
+                    <p class="repo-desc-text">
+                        代理人自主編程平台。基於 LLM 技術，讓 AI 代理協作進行程式碼編寫與軟體工程自動化，探尋下一代智慧型軟體開發工作流。
+                    </p>
+                </div>
+                <div class="repo-meta-info">
+                    <span class="lang-tag"><span class="lang-dot bg-js"></span>JavaScript</span>
+                    <a href="https://github.com/Tnoso80133/Agentic-Coding" target="_blank" class="repo-btn-link" id="link-bento-ac">
+                        Open <i class="fa-solid fa-chevron-right"></i>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 5. Repo Card AI (1x1) -->
+            <section class="bento-card bento-repo">
+                <div class="bento-repo-header">
+                    <i class="fa-solid fa-brain"></i>
+                    <span class="repo-date">2025.11</span>
+                </div>
+                <h3 class="bento-repo-name">AI</h3>
+                <p class="bento-repo-desc">
+                    人工智慧核心技術實驗庫。使用 Jupyter Notebook 進行深度學習、NLP 研究。
+                </p>
+                <div class="bento-repo-footer">
+                    <span class="lang-tag"><span class="lang-dot bg-ipynb"></span>Notebook</span>
+                    <a href="https://github.com/Tnoso80133/AI" target="_blank" class="repo-circle-btn" id="link-bento-ai"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </section>
+
+            <!-- 6. Repo Card MachineLearning (1x1) -->
+            <section class="bento-card bento-repo">
+                <div class="bento-repo-header">
+                    <i class="fa-solid fa-gears"></i>
+                    <span class="repo-date">2025.04</span>
+                </div>
+                <h3 class="bento-repo-name">MachineLearning</h3>
+                <p class="bento-repo-desc">
+                    包含經典機器學習演算法、資料集清洗與機器學習期中考實踐專案。
+                </p>
+                <div class="bento-repo-footer">
+                    <span class="lang-tag"><span class="lang-dot bg-ipynb"></span>Notebook</span>
+                    <a href="https://github.com/Tnoso80133/MachineLearning" target="_blank" class="repo-circle-btn" id="link-bento-ml"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </section>
+
+            <!-- 7. Repo Card telegramapp (1x1) -->
+            <section class="bento-card bento-repo">
+                <div class="bento-repo-header">
+                    <i class="fa-brands fa-telegram"></i>
+                    <span class="repo-date">2025.06</span>
+                </div>
+                <h3 class="bento-repo-name">telegramapp</h3>
+                <p class="bento-repo-desc">
+                    整合 Telegram 生態系統的 Web App 前端網頁應用，展示無縫對接。
+                </p>
+                <div class="bento-repo-footer">
+                    <span class="lang-tag"><span class="lang-dot bg-html"></span>HTML</span>
+                    <a href="https://github.com/Tnoso80133/telegramapp" target="_blank" class="repo-circle-btn" id="link-bento-tg"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </section>
+
+            <!-- 8. Repo Card - (1x1) -->
+            <section class="bento-card bento-repo">
+                <div class="bento-repo-header">
+                    <i class="fa-solid fa-flask"></i>
+                    <span class="repo-date">2025.04</span>
+                </div>
+                <h3 class="bento-repo-name">-</h3>
+                <p class="bento-repo-desc">
+                    個人實驗沙盒。專注於新想法的原型快速驗證與臨時程式碼小工具測試。
+                </p>
+                <div class="bento-repo-footer">
+                    <span class="lang-tag"><span class="lang-dot bg-none"></span>Unknown</span>
+                    <a href="https://github.com/Tnoso80133/-" target="_blank" class="repo-circle-btn" id="link-bento-dash"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </section>
+
+            <!-- 9. Spec/Design Card (2x1) -->
+            <section class="bento-card bento-spec col-span-2">
+                <div class="spec-info">
+                    <div class="spec-title"><i class="fa-solid fa-cube"></i> UI/UX SPECIFICATION</div>
+                    <p class="spec-desc">
+                        本網頁採用 <strong>Antigravity Kit (UI-UX Pro Max)</strong> 官方設計指南重製。
+                    </p>
+                    <div class="spec-tags">
+                        <code>Bento-Grid</code>
+                        <code>Aurora-Evolved-Mesh</code>
+                        <code>Outfit-Font</code>
+                        <code>JetBrains-Mono</code>
+                    </div>
+                </div>
+                <div class="spec-deco">
+                    <span class="code-line">--radius: 24px;</span>
+                    <span class="code-line">--spring: mass 1 damping 15;</span>
+                    <span class="code-line">--aurora: conic-gradient;</span>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- 頁尾 -->
+        <footer class="bento-footer">
+            <p>Designed with Antigravity Kit (UI-UX Pro Max) • EST. 2026</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,29 +1,40 @@
 # AgentCoding - GitHub 個人介紹網頁
 
-本專案是一個極具視覺效果且現代化的個人 GitHub 介紹網頁，展示了 **Tnoso80133** 目前所有的公開儲存庫及主要技術統計。
+本專案包含了兩套為 GitHub 用戶 **Tnoso80133** 設計的現代化、高質感個人介紹網頁。
 
-## 🌟 網頁特色
+---
 
-- **暗黑科技風格**：深邃的太空格調背景與霓虹光暈。
-- **毛玻璃效果 (Glassmorphism)**：使用 `backdrop-filter` 實現精緻的半透明玻璃質感。
-- **微動態特效**：頭像旋轉發光、卡片 Hover 浮動發光、語言點動態呼吸燈。
-- **自適應響應式佈局 (RWD)**：完美適配手機、平板與電腦螢幕。
+## 🎨 雙版本 UI 設計特色
+
+### 1. 預設毛玻璃版 (`index.html`)
+- **設計風格**：暗黑科技感（Sleek Dark Mode）結合毛玻璃質感（Glassmorphism）。
+- **色彩亮點**：細緻的半透明玻璃卡片、微發光邊框、霓虹藍與極光綠點綴。
+- **動態效果**：卡片 hover 浮動發光、語言標記呼吸燈與頭像旋轉發光。
+
+### 2. Bento Box 極光網格版 (`index1.html`) 🌟 *NEW*
+- **設計指引**：遵循 **`ui-ux-pro-max-skill` (Antigravity Kit)** 開發者作品集官方規範。
+- **佈局結構**：**Bento Box Grid (便當盒網格)**。以 1x1、2x1 及 2x2 的矩形卡片拼貼出精緻的網格佈局。
+- **背景特效**：**Aurora Evolved (動態流動極光)**。多重 conic-gradient 漸變渲染出柔和流動的極光夜空背景。
+- **字型搭配**：標題使用 Outfit 字型、內文使用 Inter，技術指標與程式碼使用 **JetBrains Mono** 呈現工程美感。
+- **動態細節**：使用仿彈簧物理（Spring Animation）的貝氏過渡曲線，滑鼠 hover 時有回彈感與 3D 霓虹外發光，並有 `PulseDot` 活躍綠色狀態燈。
+
+---
 
 ## 📂 專案檔案結構
 
-- `index.html`：網頁主結構，包含個人資訊 Hero 區塊、數據儀表板與儲存庫卡片。
-- `index.css`：專案專屬的 UI 設計系統與動畫設定（純 CSS，無第三方框架）。
-- `deploy.ps1`：專屬 PowerShell 自動化 Git 提交與推送指令碼。
+- `index.html`：毛玻璃版主頁。
+- `index.css`：毛玻璃版樣式表。
+- `index1.html`：Bento Box 極光網格版主頁。
+- `index1.css`：Bento Box 極光網格版樣式表。
+- `deploy1.ps1`：Bento 版專屬部署指令碼。
 
-## 🚀 如何啟用 GitHub Pages 瀏覽網頁
+---
 
-1. **推送代碼**：本專案已上傳至名為 `AgentCoding` 的儲存庫中。
-2. **啟用 GitHub Pages**：
-   - 前往 `AgentCoding` 儲存庫的 GitHub 頁面。
-   - 點擊上方的 **Settings** (設定)。
-   - 在左側選單中找到並點擊 **Pages**。
-   - 在 **Build and deployment** 下的 **Source** 選擇 `Deploy from a branch`。
-   - 在 **Branch** 選項中，選擇 `main`，路徑選擇 `/ (root)`，然後點擊 **Save**。
-3. **完成瀏覽**：
-   - 稍等約 1 分鐘，GitHub 會自動產生發布連結（通常為 `https://Tnoso80133.github.io/AgentCoding/`）。
-   - 點擊該連結即可線上瀏覽您的 GitHub 介紹網頁！
+## 🚀 如何線上瀏覽網頁
+
+當程式碼推送成功且您的 GitHub Pages 啟用後，您可以透過以下網址隨時瀏覽：
+
+- **毛玻璃版首頁**：
+  👉 **[https://Tnoso80133.github.io/AgentCoding/](https://Tnoso80133.github.io/AgentCoding/)**
+- **Bento Box 極光網格版** (推薦)：
+  👉 **[https://Tnoso80133.github.io/AgentCoding/index1.html](https://Tnoso80133.github.io/AgentCoding/index1.html)**

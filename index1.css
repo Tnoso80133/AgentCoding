@@ -1,0 +1,696 @@
+/* ==========================================================================
+   UI-UX PRO MAX SPECIFICATION - DESIGN SYSTEM
+   ========================================================================== */
+:root {
+    --bg-dark: #030712;
+    --fg-light: #f3f4f6;
+    --fg-muted: #9ca3af;
+    
+    /* 極光漸變色彩 (Aurora Mesh Colors) */
+    --aurora-cyan: #00ffff;
+    --aurora-magenta: #ff00ff;
+    --aurora-blue: #0066ff;
+    --aurora-purple: #7f00ff;
+    
+    /* 語言色彩定義 */
+    --lang-js: #f7df1e;
+    --lang-ipynb: #f37626;
+    --lang-html: #e34c26;
+    --lang-none: #6b7280;
+    
+    /* 玻璃擬態 (Glassmorphism Core) */
+    --glass-bg: rgba(10, 16, 32, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-border-hover: rgba(0, 255, 255, 0.35);
+    
+    /* 字型系統 */
+    --font-display: 'Outfit', -apple-system, sans-serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* 彈性微互動過渡 (Spring Animation Configuration)
+       對應 mass:1, damping:15, stiffness:120 的物理曲線效果 */
+    --spring-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --hover-glow: 0 10px 30px rgba(0, 255, 255, 0.15), 0 0 1px rgba(0, 255, 255, 0.4);
+}
+
+/* ==========================================================================
+   基礎重設 (Reset & Base)
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--fg-light);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   極光漸層背景 (Aurora Evolved Mesh)
+   ========================================================================== */
+.aurora-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, #080f25 0%, #030712 100%);
+}
+
+.aurora-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.28;
+    mix-blend-mode: screen;
+    animation: aurora-flow 25s infinite alternate ease-in-out;
+}
+
+.orb-cyan {
+    top: -20%;
+    left: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, var(--aurora-cyan) 0%, transparent 75%);
+}
+
+.orb-magenta {
+    bottom: -20%;
+    right: -10%;
+    width: 65vw;
+    height: 65vw;
+    background: radial-gradient(circle, var(--aurora-magenta) 0%, transparent 75%);
+    animation-delay: -7s;
+    animation-duration: 30s;
+}
+
+.orb-blue {
+    top: 30%;
+    left: 40%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--aurora-blue) 0%, transparent 75%);
+    animation-delay: -14s;
+    animation-duration: 20s;
+}
+
+@keyframes aurora-flow {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translate(8%, 10%) rotate(90deg) scale(1.1);
+    }
+    100% {
+        transform: translate(-5%, -8%) rotate(180deg) scale(0.9);
+    }
+}
+
+/* ==========================================================================
+   排版包裝 (Wrapper & Top Nav)
+   ========================================================================== */
+.wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: var(--fg-muted);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    padding-bottom: 1rem;
+}
+
+.nav-brand i {
+    color: var(--aurora-cyan);
+    margin-right: 0.5rem;
+    text-shadow: 0 0 8px var(--aurora-cyan);
+}
+
+/* ==========================================================================
+   便當盒網格 (Bento Box Grid)
+   ========================================================================== */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+    gap: 1.5rem;
+}
+
+/* 跨欄與跨列設定 */
+.col-span-2 { grid-column: span 2; }
+.row-span-2 { grid-row: span 2; }
+
+/* 便當卡片基礎樣式 */
+.bento-card {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 24px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--spring-transition);
+}
+
+.bento-card:hover {
+    transform: translateY(-8px) scale(1.015);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--hover-glow);
+}
+
+/* ==========================================================================
+   個別卡片內部樣式 (Card Specific Styles)
+   ========================================================================== */
+
+/* 1. Hero Card */
+.bento-hero {
+    position: relative;
+    padding: 2.5rem;
+    background: radial-gradient(circle at top right, rgba(0, 255, 255, 0.08) 0%, rgba(10, 16, 32, 0.4) 80%);
+}
+
+.hero-aurora {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(127, 0, 255, 0.2) 0%, transparent 70%);
+    filter: blur(20px);
+    pointer-events: none;
+}
+
+.hero-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.avatar-container {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 2rem;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    z-index: 2;
+    position: relative;
+    transition: var(--spring-transition);
+}
+
+.avatar-ring {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 2px dashed var(--aurora-cyan);
+    border-radius: 50%;
+    z-index: 1;
+    animation: rotate-dashed 20s linear infinite;
+    opacity: 0.6;
+}
+
+.bento-hero:hover .avatar-img {
+    transform: rotate(5deg) scale(1.05);
+    border-color: var(--aurora-cyan);
+}
+
+@keyframes rotate-dashed {
+    100% { transform: rotate(360deg); }
+}
+
+.hero-name {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #ffffff 40%, var(--aurora-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.2rem;
+}
+
+.hero-title {
+    font-family: var(--font-mono);
+    color: var(--aurora-cyan);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.25);
+}
+
+.hero-bio {
+    color: var(--fg-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 300;
+    max-width: 90%;
+}
+
+.hero-actions {
+    margin-top: 2rem;
+}
+
+.bento-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.15), rgba(0, 102, 255, 0.15));
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    padding: 0.7rem 1.6rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: var(--spring-transition);
+}
+
+.bento-btn:hover {
+    background: linear-gradient(135deg, var(--aurora-cyan), var(--aurora-blue));
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    transform: scale(1.04);
+}
+
+/* 2. Pulse Dot Card */
+.bento-pulse {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pulse-badge {
+    background: rgba(57, 255, 20, 0.05);
+    border: 1px solid rgba(57, 255, 20, 0.25);
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--lang-js); /* 電光綠 */
+    background: #39ff14;
+    position: relative;
+}
+
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: inherit;
+    animation: ripple 1.6s infinite ease-out;
+}
+
+@keyframes ripple {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3.5); opacity: 0; }
+}
+
+.pulse-text {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: #39ff14;
+    font-weight: 700;
+}
+
+.pulse-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+}
+
+.pulse-status {
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+/* 3. Stat Card */
+.bento-stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stat-num {
+    font-family: var(--font-mono);
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #ffffff, var(--aurora-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--fg-muted);
+    width: 100%;
+}
+
+.stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.stat-meta i {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* 4. Major Repo Card (Agentic Coding) */
+.bento-repo-major {
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(10, 16, 32, 0.4) 100%);
+}
+
+.repo-badge {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
+    color: var(--fg-light);
+}
+
+.repo-badge i {
+    color: var(--aurora-cyan);
+    animation: rotate-glow 4s linear infinite;
+}
+
+.repo-body {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.repo-title-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.repo-desc-text {
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.repo-meta-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 1rem;
+    width: 100%;
+}
+
+.repo-btn-link {
+    color: var(--aurora-cyan);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: var(--spring-transition);
+}
+
+.repo-btn-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px var(--aurora-cyan);
+}
+
+.repo-btn-link:hover i {
+    transform: translateX(3px);
+}
+
+/* 5~8. 一般 Repo 卡片 */
+.bento-repo {
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bento-repo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.bento-repo-header i {
+    font-size: 1.25rem;
+    color: var(--aurora-cyan);
+}
+
+.bento-repo-header .repo-date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.bento-repo-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.bento-repo-desc {
+    color: var(--fg-muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    font-weight: 300;
+    flex-grow: 1;
+}
+
+.bento-repo-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 0.8rem;
+}
+
+.lang-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--fg-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.lang-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.bg-js { background-color: var(--lang-js); box-shadow: 0 0 6px var(--lang-js); }
+.bg-ipynb { background-color: var(--lang-ipynb); box-shadow: 0 0 6px var(--lang-ipynb); }
+.bg-html { background-color: var(--lang-html); box-shadow: 0 0 6px var(--lang-html); }
+.bg-none { background-color: var(--lang-none); }
+
+.repo-circle-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: var(--spring-transition);
+}
+
+.bento-card:hover .repo-circle-btn {
+    border-color: var(--aurora-cyan);
+    color: var(--aurora-cyan);
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
+}
+
+.repo-circle-btn:hover {
+    background-color: var(--aurora-cyan);
+    color: var(--bg-dark) !important;
+    transform: scale(1.1);
+}
+
+/* 9. Spec/Design Card */
+.bento-spec {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    background: linear-gradient(135deg, rgba(127, 0, 255, 0.05) 0%, rgba(10, 16, 32, 0.4) 100%);
+}
+
+.spec-info {
+    flex-grow: 1;
+}
+
+.spec-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--aurora-purple);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+}
+
+.spec-title i {
+    text-shadow: 0 0 8px var(--aurora-purple);
+}
+
+.spec-desc {
+    color: var(--fg-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.spec-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.spec-tags code {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    color: var(--fg-muted);
+}
+
+.spec-deco {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.15);
+    border-left: 2px solid rgba(127, 0, 255, 0.15);
+    padding-left: 1rem;
+    user-select: none;
+}
+
+/* ==========================================================================
+   Bento Footer
+   ========================================================================== */
+.bento-footer {
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding-top: 2rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.2);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   響應式設計 (RWD Media Queries)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .col-span-2 {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+    
+    .col-span-2 {
+        grid-column: span 1;
+    }
+    
+    .row-span-2 {
+        grid-row: span 1;
+    }
+    
+    .bento-hero {
+        padding: 2rem 1.5rem;
+    }
+    
+    .hero-name {
+        font-size: 2.2rem;
+    }
+    
+    .bento-spec {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    
+    .spec-deco {
+        border-left: none;
+        border-top: 2px solid rgba(127, 0, 255, 0.15);
+        padding-left: 0;
+        padding-top: 1rem;
+        width: 100%;
+    }
+}
